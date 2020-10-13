@@ -15,8 +15,8 @@
                     alert("Introduzca una pregunta valida");
                 return false;
             }
-            var teacher = '/^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/';
-            var alumno = '/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/';
+            var teacher = /^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/;
+            var alumno = /^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/;
             if(!(teacher.test(email) || alumno.test(email))){  
                 alert("Introduzca un email valido");     
                 return false;
