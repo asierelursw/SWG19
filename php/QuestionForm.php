@@ -2,15 +2,98 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+  <script src = '../js/ValidateFieldsQuestion.js'> </script>
+  <script src= '../js/jquery-3.4.1.min.js'> </script>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
+	<form id='fquestion' name='fquestion' action= "AddQuestion.php" onsubmit="return validar();">
+ <ul>
+ <center>
+  <li>
+    <label for="mail">Correo*:</label>
+    <input type="email" id="mail" name="user_mail" size= "52">
+  </li>
+  <p>
+  <br/>
+  </p>
+  <li>
+    <label for="pregunta">Pregunta*:</label>
+    <input type="text" id="pregunta" size= "50">
+  </li>
+  <p>
+  <br/>
+  </p>
+  <li>
+    <label for="respuesta">Respuesta correcta*:
+	<br/>
+	</label>
+    <input type="textarea" id="correcta" name="user_message" size="62"> </textarea>
+  </li>
+  <p>
+  <br/>
+  </p>
+  <li>
+    <label for="respuesta">Respuesta incorrecta*:
+	<br/>
+	</label>
+    <input type="textarea" id="falsa1" name="user_message" size="62"> </textarea>
+  </li>
+  <p>
+  <br/>
+  </p>
+  <li>
+    <label for="respuesta">Respuesta incorrecta*:
+	<br/>
+	</label>
+    <input type="textarea" id="falsa2" name="user_message" size="62"> </textarea>
+  </li>
+  <p>
+  <br/>
+  </p>
+ <li>
+    <label for="respuesta">Respuesta incorrecta*:
+	<br/>
+	</label>
+    <input type="textarea" id="falsa3" name="user_message" size="62"></textarea>
+  </li>
+  <p>
+  <br/>
+  </p>
+   <li>
+    <label for="dificultad"> Dificultad de la pregunta:</label>
+	<select name="dificultad">
 
-      Añadir el formulario y los scripts necesarios para que el usuario <br>
-      pueda introducir los datos de una pregunta sin imagen.
+	<option>Facil</option>
 
+	<option>Medio</option>
+
+	<option>Dificil</option>
+	</li>
+	<p>
+	<br/>
+	</p>
+	<p>
+	<input type="reset" value="BORRAR" onclick="Borrar()">
+	</p>
+	<li>
+    <label for="respuesta">Tema*:
+	<br/>
+	</label>
+    <input type="textarea" id="tema" name="user_message" size="62"></textarea>
+  </li>
+</select>
+ </ul> 
+ 
+ <p>
+ <br/>
+ </p>
+ <input type="submit" value="Enviar" id="Enviar" style="height:100px; width:150px">
+ </center>
+</form>
+	
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

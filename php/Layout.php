@@ -5,6 +5,7 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <?php include '../php/QuestionForm.php' ?>
   <section class="main" id="s1">
     <div>
 
