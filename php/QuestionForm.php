@@ -21,7 +21,7 @@
   </p>
   <li>
     <label for="pregunta">Pregunta*:</label>
-    <input type="text" id="pregunta" size= "50">
+    <input type="text" id="pregunta" name="pregunta" size= "50">
   </li>
   <p>
   <br/>
@@ -30,7 +30,7 @@
     <label for="respuesta">Respuesta correcta*:
 	<br/>
 	</label>
-    <input type="textarea" id="correcta" name="user_message" size="62"> </textarea>
+    <input type="textarea" id="correcta" name="correcta" size="62"> </textarea>
   </li>
   <p>
   <br/>
@@ -39,7 +39,7 @@
     <label for="respuesta">Respuesta incorrecta*:
 	<br/>
 	</label>
-    <input type="textarea" id="falsa1" name="user_message" size="62"> </textarea>
+    <input type="textarea" id="falsa1" name="falsa1" size="62"> </textarea>
   </li>
   <p>
   <br/>
@@ -48,7 +48,7 @@
     <label for="respuesta">Respuesta incorrecta*:
 	<br/>
 	</label>
-    <input type="textarea" id="falsa2" name="user_message" size="62"> </textarea>
+    <input type="textarea" id="falsa2" name="falsa2" size="62"> </textarea>
   </li>
   <p>
   <br/>
@@ -57,7 +57,7 @@
     <label for="respuesta">Respuesta incorrecta*:
 	<br/>
 	</label>
-    <input type="textarea" id="falsa3" name="user_message" size="62"></textarea>
+    <input type="textarea" id="falsa3" name="falsa3" size="62"></textarea>
   </li>
   <p>
   <br/>
@@ -82,7 +82,7 @@
     <label for="respuesta">Tema*:
 	<br/>
 	</label>
-    <input type="textarea" id="tema" name="user_message" size="62"></textarea>
+    <input type="textarea" id="tema" name="tema" size="62"></textarea>
   </li>
 </select>
  </ul> 
