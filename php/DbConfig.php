@@ -9,7 +9,7 @@ if ($local==1){
 else{
     $server="localhost";
     $user="id14888567_bdasiercruzelursalgueira";
-    $pass="R|A8QaO_Z1ZU]|GD";
+    $pass="******************";
     $basededatos="id14888567_quiz";
 }
 ?>
