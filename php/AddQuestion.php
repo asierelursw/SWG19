@@ -18,7 +18,7 @@
 	$alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
 
 	$pregunta = $_REQUEST['pregunta'];
-	$correcta = $_REQUEST'[correcta'];
+	$correcta = $_REQUEST['correcta'];
 	$falsa1 = $_REQUEST['falsa1'];
 	$falsa2 = $_REQUEST['falsa2'];
 	$falsa3 = $_REQUEST['falsa3'];
@@ -34,7 +34,7 @@
 				{
 				die('Error: ' . mysqli_error($link));
 				}
-				echo "1 record added";
+				echo "Pregunta añadida con éxito";
 				//echo "<p> <a href='verdatos.php'> Ver registros </a>";
 				mysqli_close($link);
 			}
