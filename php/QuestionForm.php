@@ -6,15 +6,22 @@
   <script src= '../js/jquery-3.4.1.min.js'> </script>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
+    <?php
+    if(isset($_GET['email'])){
+        include "../php/MenusRegistrados.php";
+        $email=$_GET['email'];
+    } else {
+        include "../php/Menus.php";
+    }
+  ?>
   <section class="main" id="s1">
     <div>
-	<form id='fquestion' name='fquestion' action= "AddQuestion.php" onsubmit="return validar();">
+	<form id='fquestion' name='fquestion' action= "AddQuestion.php" method="Post">
  <ul>
  <center>
   <li>
     <label for="mail">Correo*:</label>
-    <input type="email" id="mail" name="user_mail" size= "52">
+    <input type="email" id="mail" name="user_mail" value="<?php echo $email; ?>" size= "52" readonly>
   </li>
   <p>
   <br/>
