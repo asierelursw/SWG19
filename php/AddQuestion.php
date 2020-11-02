@@ -5,51 +5,61 @@
   <?php include '../php/DbConfig.php'?>
 </head>
 <body>
-  <?php include '../php/Menus.php';?>
+    <?php
+    if(isset($_GET['email'])){
+        include "../php/MenusRegistrados.php";
+    } else {
+        include "../php/Menus.php";
+    }
+  ?>
   
   <section class="main" id="s1">
     <div>
 	<?php
 	$link = mysqli_connect($server, $user, $pass, $basededatos);
 
-	$user_mail = $_REQUEST['user_mail'];
+	$user_mail = $_POST['user_mail'];
 
 	$prof = "/^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/";
 	$alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
 
-	$pregunta = $_REQUEST['pregunta'];
-	$correcta = $_REQUEST['correcta'];
-	$falsa1 = $_REQUEST['falsa1'];
-	$falsa2 = $_REQUEST['falsa2'];
-	$falsa3 = $_REQUEST['falsa3'];
-	$dificultad = $_REQUEST['dificultad'];
-	$tema = $_REQUEST['tema'];
+	$pregunta = $_POST['pregunta'];
+	$correcta = $_POST['correcta'];
+	$falsa1 = $_POST['falsa1'];
+	$falsa2 = $_POST['falsa2'];
+	$falsa3 = $_POST['falsa3'];
+	$dificultad = $_POST['dificultad'];
+	$tema = $_POST['tema'];
 
-	if(isset($user_mail) && isset($pregunta) && isset($correcta) && isset($falsa1) && isset($falsa2) && isset($falsa3) && isset($dificultad) && isset($tema)){
-		if((preg_match($prof,$user_mail) || preg_match($alum, $user_mail)){
-			if(strlen($pregunta)>10){
+	if(strlen($user_mail)>0 && strlen($pregunta)>0 && strlen($correcta)>0 && strlen($falsa1)>0 && strlen($falsa2)>0 && strlen($falsa3)>0 && strlen($dificultad)>0 && strlen($tema)>0){
+		if((preg_match($prof,$user_mail) || preg_match($alum, $user_mail))){
+			if(strlen($pregunta)>=10){
+				echo "val3";
 				$sql="INSERT INTO Preguntas(Correo, Pregunta, Correcta, Incorrecta1, Incorrecta2, Incorrecta3, Dificultad, Tema) 
-				VALUES('$_REQUEST[user_mail]','$_REQUEST[pregunta]','$_REQUEST[correcta]','$_REQUEST[falsa1]','$_REQUEST[falsa2]','$_REQUEST[falsa3]','$_REQUEST[dificultad]','$_REQUEST[tema]');";
+				VALUES('$user_mail','$pregunta','$correcta','$falsa1','$falsa2','$falsa3','$dificultad','$tema');";
 				if (!mysqli_query($link ,$sql))
 				{
-				die('Error: ' . mysqli_error($link));
-				}
+				die('Error: ' . mysqli_error());
+				}else{
 				echo "Pregunta añadida con éxito";
 				//echo "<p> <a href='verdatos.php'> Ver registros </a>";
 				mysqli_close($link);
-			}
-		} else{
-			echo("Introduzca un email valido");
+				} 
+			}else{
+					echo "<script>alert(\"La pregunta tiene que tener 10 caracteres minimo\");document.location.href='QuestionForm.php?email=$user_mail';</script>";
+				}
+		}else{
+			echo "<script>alert(\"Introduzca un email valido\");document.location.href='QuestionForm.php?email=$user_mail';</script>";
 		}
 
 	}else{
-		echo("Rellene los campos obligatorios");
+		echo "<script>alert(\"Rellene los campos obligatorios\");document.location.href='QuestionForm.php?email=$user_mail';</script>";
 	}
 
 	?>
 
     </div>
-	<a href="ShowQuestions.php"> Ver BD </a>
+	<a href="ShowQuestions.php?email=<?php echo $user_mail;?>"> Ver BD </a>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
