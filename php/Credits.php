@@ -6,7 +6,13 @@
 <body>
 	<font face="Comic Sans MS,arial,verdana">
 	</font>
-  <?php include '../php/Menus.php' ?>
+  <?php
+    if(isset($_GET['email'])){
+        include "../php/MenusRegistrados.php";
+    } else {
+        include "../php/Menus.php";
+    }
+  ?>
   <section class="main" id="s1">
     <div>
 
