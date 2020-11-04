@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?xml version="1.0" encoding="ISO-8859-1”
+standalone="no“ ?>
 <html>
 <head>
   <?php include '../html/Head.html'?>
@@ -55,8 +57,30 @@
 	}else{
 		echo "<script>alert(\"Rellene los campos obligatorios\");document.location.href='QuestionForm.php?email=$user_mail';</script>";
 	}
-
 	?>
+	<?php
+	
+	$xml->simplexml_load_file('Questions.xml');
+	#Asi añades hijos al xml
+	
+	$assessmentItem = $xml->addChild('assessmentItem');
+
+	$assessmentItem -> addChild('itemBody', $_POST['pregunta']);
+
+	$correctResponse = $assessmentItem->addChild('correctResponse');
+	$correct = $correctResponse->addChild('response',$_POST['correcta']);
+
+	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
+
+	$incorrect1 = $incorrectResponses->addChild('response',$_POST['falsa1'];);
+	$incorrect2 = $incorrectResponses->addChild('response',$_POST['falsa2'];);
+	$incorrect3 = $incorrectResponses->addChild('response',$_POST['falsa3'];);
+	
+	echo $xml->asXML();
+	$xml->asXML('Questions.xml');
+	}
+	?>
+
 
     </div>
 	<a href="ShowQuestions.php?email=<?php echo $user_mail;?>"> Ver BD </a>
