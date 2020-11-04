@@ -62,7 +62,7 @@ standalone="no“ ?>
 	
 	$xml->simplexml_load_file('Questions.xml');
 	#Asi añades hijos al xml
-	
+
 	$assessmentItem = $xml->addChild('assessmentItem');
 
 	$assessmentItem -> addChild('itemBody', $_POST['pregunta']);
@@ -72,9 +72,9 @@ standalone="no“ ?>
 
 	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
 
-	$incorrect1 = $incorrectResponses->addChild('response',$_POST['falsa1'];);
-	$incorrect2 = $incorrectResponses->addChild('response',$_POST['falsa2'];);
-	$incorrect3 = $incorrectResponses->addChild('response',$_POST['falsa3'];);
+	$incorrect1 = $incorrectResponses->addChild('response',$_POST['falsa1']);
+	$incorrect2 = $incorrectResponses->addChild('response',$_POST['falsa2']);
+	$incorrect3 = $incorrectResponses->addChild('response',$_POST['falsa3']);
 	
 	echo $xml->asXML();
 	$xml->asXML('Questions.xml');
