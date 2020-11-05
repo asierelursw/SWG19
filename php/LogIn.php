@@ -61,8 +61,6 @@
     } #29
     ?>
     </div>
-    
-  <a href="QuestionForm.php"> Añadir pregunta </a>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
