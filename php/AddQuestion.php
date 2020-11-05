@@ -36,7 +36,6 @@ standalone="no“ ?>
 	if(strlen($user_mail)>0 && strlen($pregunta)>0 && strlen($correcta)>0 && strlen($falsa1)>0 && strlen($falsa2)>0 && strlen($falsa3)>0 && strlen($dificultad)>0 && strlen($tema)>0){
 		if((preg_match($prof,$user_mail) || preg_match($alum, $user_mail))){
 			if(strlen($pregunta)>=10){
-				echo "val3";
 				$sql="INSERT INTO Preguntas(Correo, Pregunta, Correcta, Incorrecta1, Incorrecta2, Incorrecta3, Dificultad, Tema) 
 				VALUES('$user_mail','$pregunta','$correcta','$falsa1','$falsa2','$falsa3','$dificultad','$tema');";
 				if (!mysqli_query($link ,$sql))
