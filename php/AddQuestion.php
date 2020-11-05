@@ -38,6 +38,24 @@ standalone="no“ ?>
 			if(strlen($pregunta)>=10){
 				$sql="INSERT INTO Preguntas(Correo, Pregunta, Correcta, Incorrecta1, Incorrecta2, Incorrecta3, Dificultad, Tema) 
 				VALUES('$user_mail','$pregunta','$correcta','$falsa1','$falsa2','$falsa3','$dificultad','$tema');";
+					$xml=simplexml_load_file("../xml/Questions.xml");
+                	#Asi añades hijos al xml
+                
+                	$assessmentItem = $xml->addChild('assessmentItem');
+                
+                	$assessmentItem -> addChild('itemBody', $pregunta);
+                
+                	$correctResponse = $assessmentItem->addChild('correctResponse');
+                	$correct = $correctResponse->addChild('response',$_POST['correcta']);
+                
+                	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
+                
+                	$incorrect1 = $incorrectResponses->addChild('response',$falsa1);
+                	$incorrect2 = $incorrectResponses->addChild('response',$falsa2);
+                	$incorrect3 = $incorrectResponses->addChild('response',$falsa3);
+                	
+                	#echo $xml->asXML();
+                	$xml->asXML("../xml/Questions.xml");
 				if (!mysqli_query($link ,$sql))
 				{
 				die('Error: ' . mysqli_error());
@@ -56,27 +74,6 @@ standalone="no“ ?>
 	}else{
 		echo "<script>alert(\"Rellene los campos obligatorios\");document.location.href='QuestionForm.php?email=$user_mail';</script>";
 	}
-	?>
-	<?php
-	
-	$xml->simplexml_load_file('Questions.xml');
-	#Asi añades hijos al xml
-
-	$assessmentItem = $xml->addChild('assessmentItem');
-
-	$assessmentItem -> addChild('itemBody', $_POST['pregunta']);
-
-	$correctResponse = $assessmentItem->addChild('correctResponse');
-	$correct = $correctResponse->addChild('response',$_POST['correcta']);
-
-	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
-
-	$incorrect1 = $incorrectResponses->addChild('response',$_POST['falsa1']);
-	$incorrect2 = $incorrectResponses->addChild('response',$_POST['falsa2']);
-	$incorrect3 = $incorrectResponses->addChild('response',$_POST['falsa3']);
-	
-	echo $xml->asXML();
-	$xml->asXML('Questions.xml');
 	?>
 
 
