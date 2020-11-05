@@ -46,7 +46,7 @@ standalone="no“ ?>
                 	$assessmentItem -> addChild('itemBody', $pregunta);
                 
                 	$correctResponse = $assessmentItem->addChild('correctResponse');
-                	$correct = $correctResponse->addChild('response',$_POST['correcta']);
+                	$correct = $correctResponse->addChild('response',$correcta]);
                 
                 	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
                 
