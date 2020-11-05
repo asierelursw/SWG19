@@ -77,7 +77,6 @@ standalone="no“ ?>
 	
 	echo $xml->asXML();
 	$xml->asXML('Questions.xml');
-	}
 	?>
 
 
