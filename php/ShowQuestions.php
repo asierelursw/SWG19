@@ -48,7 +48,7 @@
 		?>
     </div>
     <?php
-    $Questions = simplexml_load_file('Questions.xml');
+    $Questions = simplexml_load_file("../xml/Questions.xml");
     foreach($Questions->xpath('//assessmentItem') as $assessmentItem){
       #Asi recorres todas las preguntas que haya en el xml
     }
