@@ -42,19 +42,23 @@ standalone="no“ ?>
                 	#Asi añades hijos al xml
                 
                 	$assessmentItem = $xml->addChild('assessmentItem');
-                
-                	$assessmentItem -> addChild('itemBody', $pregunta);
-                
+
+                	$assessmentItem -> addAttribute('subject', $tema);
+                	$assessmentItem -> addAttribute('author', $user_mail);
+
+                	$body = $assessmentItem -> addChild('itemBody');
+
+                	$body -> addChild('p', $pregunta);
+                	
                 	$correctResponse = $assessmentItem->addChild('correctResponse');
-                	$correct = $correctResponse->addChild('response',$_POST['correcta']);
+                	$correctResponse->addChild('response', $correcta);
                 
                 	$incorrectResponses = $assessmentItem->addChild('incorrectResponses');
                 
-                	$incorrect1 = $incorrectResponses->addChild('response',$falsa1);
-                	$incorrect2 = $incorrectResponses->addChild('response',$falsa2);
-                	$incorrect3 = $incorrectResponses->addChild('response',$falsa3);
+                	$incorrectResponses->addChild('response',$falsa1);
+                	$incorrectResponses->addChild('response',$falsa2);
+                	$incorrectResponses->addChild('response',$falsa3);
                 	
-                	#echo $xml->asXML();
                 	$xml->asXML("../xml/Questions.xml");
 				if (!mysqli_query($link ,$sql))
 				{
@@ -78,7 +82,18 @@ standalone="no“ ?>
 
 
     </div>
+    <?php
+    function formatXml($simpleXMLElement){
+    	$xmlDocument = new DOMDocument('1.0');
+    	$xmlDocument -> preserveWhiteSpace = false;
+    	$xmlDocument -> formatOutput = true;
+    	$xmlDocument -> loadXML($simpleXMLElement -> asXML());
+
+    	return $xmlDocument ->saveXML();
+    }
+    ?>
 	<a href="ShowQuestions.php?email=<?php echo $user_mail;?>"> Ver BD </a>
+	<a href="ShowXMLQuestions.php?email=<?php echo $user_mail;?>"> Ver XML </a>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
