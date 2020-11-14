@@ -97,11 +97,12 @@
  <p>
  <br/>
  </p>
- <input type="button" value="Enviar" id="Enviar" style="height:100px; width:150px">
+ <input type="button" value="Enviar" id="Enviar"  style="height:100px; width:150px" onclick ="AñadirPregunta()">
  </center>
 </form>
-	
-    </div>
+ <input type="button" valude="Mostrar Preguntas" id="Mostrar"style="height:100px; width:150px" onclick =" VerPreguntas($email)">
+	<div id="result"></div>
+  
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
