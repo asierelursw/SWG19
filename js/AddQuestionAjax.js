@@ -1,10 +1,13 @@
 function AñadirPregunta(){
     xhr = new XMLHttpRequestObject();
-    xhr.onreadystatechange = function(){
+    
+    	xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status==200){
-            xhr.open("POST","AddQuestion.php?email="+$email, true);
-            xhr.send();
+        	var formulario = $("fquestion").serialize();
+            xhr.open("POST","AddQuestion.php", true);
+            xhr.send(formulario);
         }
+        return false;
     }
 }
 //Este con XmlHttpRequest
