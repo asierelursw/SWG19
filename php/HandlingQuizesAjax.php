@@ -4,6 +4,8 @@
   <?php include '../html/Head.html'?>
   <script src = '../js/ValidateFieldsQuestion.js'> </script>
   <script src= '../js/jquery-3.4.1.min.js'> </script>
+  <script src= '../js/AddQuestionAjax.js'> </script>
+  <script src= '../js/ShowQuestionAjax.js'> </script>
 </head>
 <body>
     <?php
@@ -100,7 +102,7 @@
  <input type="button" value="Enviar" id="Enviar"  style="height:100px; width:150px" onclick ="AñadirPregunta()">
  </center>
 </form>
- <input type="button" valude="Mostrar Preguntas" id="Mostrar"style="height:100px; width:150px" onclick =" VerPreguntas($email)">
+ <input type="button" value="Mostrar Preguntas" id="Mostrar"style="height:100px; width:150px" onclick ="VerPreguntas($email)">
 	<div id="result"></div>
   
   </section>
