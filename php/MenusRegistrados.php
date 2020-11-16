@@ -10,8 +10,6 @@ echo"
   <span><a href='Layout.php?email=$email'>Inicio</a></span>
   <span><a href='HandlingQuizesAjax.php?email=$email'> Insertar Pregunta</a></span>
   <span><a href='Credits.php?email=$email'>Creditos</a></span>
-  <span><a href='ShowQuestions.php?email=$email'>Ver BD</a></span>
-  <span><a href='ShowXMLQuestions.php?email=$email'>Ver XML</a></span>
 </nav>";
 
 ?>
