@@ -18,7 +18,7 @@
   ?>
   <section class="main" id="s1">
     <div>
-	<form id='fquestion' name='fquestion' action= "AddQuestion.php" method="Post">
+	<form id='fquestion' name='fquestion' action= "" method="Post">
  <ul>
  <center>
   <li>
