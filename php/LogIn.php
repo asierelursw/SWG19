@@ -49,7 +49,7 @@
     			   }else{
     			     $cont= mysqli_num_rows($usuarios); 
               if($cont==1){
-                echo "<script>alert(\"¡Bienvenido!\");document.location.href='Layout.php?email=$user_mail';</script>";
+                echo "<script>alert(\"¡Bienvenido!\");document.location.href='HandlingQuizesAjax.php?email=$user_mail';</script>";
               } 
               else {
                echo("Parametros de login incorrectos");
