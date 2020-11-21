@@ -26,7 +26,8 @@
                 <label for="email">Correo*:</label>
                 <input type="email" id="user_mail" name="user_mail" size="52" onblur="VerificarVip()">
                 <br>
-                <label id="vip"></label>
+                </br>
+                <label id="vip" value=""></label>
                 <!-- coincidir con las expresiones regulares de la validacion al enviar preguntas -->
             </li>
             <p>
@@ -54,6 +55,7 @@
                 <!-- pass == pass2 -->
             </li>    
 	        <!-- Foto Opcional -->
+            <br>
             <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true">
         </ul>
         </form>
