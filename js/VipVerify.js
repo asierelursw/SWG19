@@ -8,5 +8,11 @@ function VerificarVip() {
         document.getElementById("vip").innerHTML = xhr.responseText;
     };
     xhr.send("");
-    
+  }
+
+  function permEnv(){
+      var vip = document.getElementById('vip').value();
+      if(vip== "Usuario Vip"){
+        document.getElementById('Enviar').disabled=false;
+      }
   }

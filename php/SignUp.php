@@ -54,7 +54,7 @@
                 <!-- pass == pass2 -->
             </li>    
 	        <!-- Foto Opcional -->
-            <input type="submit" name="submit" value="Enviar" id="Enviar">
+            <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true">
         </ul>
         </form>
         <?php 
