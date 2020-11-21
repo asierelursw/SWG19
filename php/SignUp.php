@@ -6,7 +6,7 @@
 <head>
   <?php include '../html/Head.html'?>
   <?php include '../php/DbConfig.php'?>
-  <script src='../js/VipVerify.js'>
+  <script src='../js/VerifyAjax.js'>
     </script>
 </head>
 <body>
@@ -43,7 +43,10 @@
             <p>
             <li>
                 <label for="password">Contraseña*:</label>
-                <input type="password" id="pass1" name="pass1" size="52">
+                <input type="password" id="pass1" name="pass1" size="52" onblur="VarificarPass()">
+                <br>
+                </br>
+                <label id="validpass" value=""></label>
                 <!-- minimo longitud 6 -->
             </li>
             <p>
