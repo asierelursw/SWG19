@@ -6,6 +6,8 @@
 <head>
   <?php include '../html/Head.html'?>
   <?php include '../php/DbConfig.php'?>
+  <script src='../js/VipVerify.js'>
+    </script>
 </head>
 <body>
   <?php include '../php/Menus.php';?>
@@ -22,7 +24,9 @@
             </li>
             <li>
                 <label for="email">Correo*:</label>
-                <input type="email" id="user_mail" name="user_mail" size="52">
+                <input type="email" id="user_mail" name="user_mail" size="52" onblur="VerificarVip()">
+                <br>
+                <label id="vip"></label>
                 <!-- coincidir con las expresiones regulares de la validacion al enviar preguntas -->
             </li>
             <p>

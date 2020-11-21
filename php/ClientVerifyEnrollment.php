@@ -5,12 +5,12 @@ require_once('../lib/class.wsdlcache.php');
 
 $soapclient = new nusoap_client( 'http://ehusw.es/jav/ServiciosWeb/comprobarmatricula.php?wsdl', true);
 
-if (true/*isset($_POST['email'])*/){
-    $result = $soapclient->call('comprobar',array('x'=>"esalgueira001@ikasle.ehu.eus"));
+if (isset($_GET['email'])){
+    $result = $soapclient->call('comprobar',array('x'=>$_GET['email']));
    if($result =="SI"){
-       echo "eres vip lokooo";
+       echo "Usuario Vip";
    }else{
-       echo"eres el puto amo tio no pasa nada";
+       echo"Usuario No Vip";
    }
 }
 ?>
