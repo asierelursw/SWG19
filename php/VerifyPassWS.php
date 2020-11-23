@@ -26,7 +26,7 @@
     
         if(!isset($HTTP_RAW_POST_DATA)){
 
-            $HTTP_RAW_POST_DATA = file_get_contents('php://input/../txt/toppasswords.txt');
+            $HTTP_RAW_POST_DATA = file_get_contents('../txt/toppasswords.txt');
             
         }
 
@@ -44,7 +44,7 @@
     //llamamos al método service de la clase nusoap antes obtenemos los valores de los parámetros
 
     if (!isset($HTTP_RAW_POST_DATA)){
-        $HTTP_RAW_POST_DATA =file_get_contents('php://input/../txt/toppasswords.txt');
+        $HTTP_RAW_POST_DATA =file_get_contents('../txt/toppasswords.txt');
         
     }
 
