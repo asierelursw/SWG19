@@ -23,31 +23,20 @@
     //implementamos la función
 
     function Validar ($x){
-    
-        if(!isset($HTTP_RAW_POST_DATA)){
-
-            $HTTP_RAW_POST_DATA = file_get_contents('../txt/toppasswords.txt');
-            
-        }
-
-        $passwords = file($HTTP_RAW_POST_DATA);
         
-        for($i=0; $i<count($passwords);$i++){
-            
-            if($x == $passwords[$i]){
-                return "INVALIDA";
-            }
+        $archivo = file_get_contents('../txt/toppasswords.txt');
+        
+        if (strpos($archivo, $x) != false){ //si esta la palabra x en el archivo
+            return "INVALIDA";
+        }else{
+            return "VALIDA";
         }
-        return "VALIDA";
+        
     }
 
     //llamamos al método service de la clase nusoap antes obtenemos los valores de los parámetros
 
-    if (!isset($HTTP_RAW_POST_DATA)){
-        $HTTP_RAW_POST_DATA =file_get_contents('../txt/toppasswords.txt');
-        
-    }
-
-    $server->service($HTTP_RAW_POST_DATA);
+    if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );
+        $server->service($HTTP_RAW_POST_DATA);
 
 ?>
