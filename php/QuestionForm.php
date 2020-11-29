@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +9,13 @@
   <script src= '../js/jquery-3.4.1.min.js'> </script>
 </head>
 <body>
-    <?php
-    if(isset($_GET['email'])){
+<?php
+    if(isset($_SESSION['usuario'])){
         include "../php/MenusRegistrados.php";
-        $email=$_GET['email'];
     } else {
         include "../php/Menus.php";
     }
-  ?>
+?>
   <section class="main" id="s1">
     <div>
 	<form id='fquestion' name='fquestion' action= "AddQuestion.php" method="Post">
