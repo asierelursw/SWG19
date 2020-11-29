@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,13 +9,13 @@
 <body>
 	<font face="Comic Sans MS,arial,verdana">
 	</font>
-  <?php
-    if(isset($_GET['email'])){
+<?php
+    if(isset($_SESSION['usuario'])){
         include "../php/MenusRegistrados.php";
     } else {
         include "../php/Menus.php";
     }
-  ?>
+?>
   <section class="main" id="s1">
     <div>
 
