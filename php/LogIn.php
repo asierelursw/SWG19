@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +8,13 @@
   <?php include '../php/DbConfig.php'?>
 </head>
 <body>
-  <?php include '../php/Menus.php';?>
+<?php
+    if(isset($_SESSION['usuario'])){
+        include "../php/MenusRegistrados.php";
+    } else {
+        include "../php/Menus.php";
+    }
+?>
   
   <section class="main" id="s1">
     <div>
@@ -49,7 +58,8 @@
     			   }else{
     			     $cont= mysqli_num_rows($usuarios); 
               if($cont==1){
-                echo "<script>alert(\"¡Bienvenido!\");document.location.href='HandlingQuizesAjax.php?email=$user_mail';</script>";
+                $_SESSION["usuario"]= $user_mail;
+                echo "<script>alert(\"¡Bienvenido!\");document.location.href='HandlingQuizesAjax.php';</script>";
               } 
               else {
                echo("Parametros de login incorrectos");
