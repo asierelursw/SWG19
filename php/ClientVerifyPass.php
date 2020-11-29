@@ -15,7 +15,6 @@
 
     //Llamamos la función que habíamos implementado en el Web Service
     //e imprimimos lo que nos devuelve
-
     if(isset($cont)){
 
         $result = $soapclient->call('Validar',array('x'=>$cont));
