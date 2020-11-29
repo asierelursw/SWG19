@@ -1,15 +1,18 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
-<head>
-  <?php include '../html/Head.html'?>
-  <?php include '../php/DbConfig.php'?>
-</head>
 <body>
- <?php 
-   if(isset($_GET["email"])) { 
-        $email = $_GET["email"];
-        echo "<script>alert(\"¡Adiós $email!\");document.location.href='Layout.php';</script>"; 
-    } else {
-        echo "<script>document.location.href='Layout.php';</script>"; 
-    }
+
+<?php
+// remove all session variables
+session_unset();
+
+// destroy the session
+session_destroy();
+echo"<script>alert(\"¡Hasta pronto!\");document.location.href='Layout.php';</script>";
 ?>
+
+</body>
+</html>
