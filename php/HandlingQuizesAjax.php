@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,14 +29,13 @@
 </head>
 
 <body>
-    <?php
-    if(isset($_GET['email'])){
+<?php
+    if(isset($_SESSION['usuario'])){
         include "../php/MenusRegistrados.php";
-        $email=$_GET['email'];
     } else {
         include "../php/Menus.php";
     }
-  ?>
+?>
         <section class="main" id="s1">
             <div id="div1">
                 <form id='fquestion' name='fquestion' method="POST">
@@ -41,7 +43,7 @@
                         <center>
                             <li>
                                 <label for="mail">Correo*:</label>
-                                <input type="email" id="mail" name="user_mail" value="<?php echo $email; ?>" size="52" readonly>
+                                <input type="email" id="mail" name="user_mail" value="<?php echo $_SESSION['usuario']; ?>" size="52" readonly>
                             </li>
                             <p>
                                 <br />
