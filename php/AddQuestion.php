@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <?xml version="1.0" encoding="ISO-8859-1”
 standalone="no“ ?>
