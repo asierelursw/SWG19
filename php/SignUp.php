@@ -110,7 +110,7 @@
                             if ($NyP == trim($NyP) && strpos($NyP, ' ') !== false){
                                 $link = mysqli_connect($server, $user, $pass, $basededatos);
                                 $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario) 
-                                VALUES('$user_mail','$pass1','$NyP','$radio');";
+                                VALUES('$user_mail', md5('$pass1'),'$NyP','$radio');";
                                 if (!mysqli_query($link ,$sql))
                                 {
                                     die('Error: ' . mysqli_error());
