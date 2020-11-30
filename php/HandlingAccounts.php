@@ -30,7 +30,7 @@ session_start();
             echo "<tr><th>Correo</th><th>Contraseña</th><th>Nombre y Apellido</th><th>Tipo de Usuario</th><th>Bloquear/Desbloquear</th><th>BORRAR</th></tr>"; 
 
         while($row = mysqli_fetch_array($usuarios)){ 
-            echo "<tr><td>" . $row['Correo'] . "</td><td>" . $row['Pass'] . "</td><td>" . $row['NomApe'] . "</td><td>" .$row['TipoUsuario']."</td><td>" .$row['Bloqueado/Desbloqueado']. /*"</td><td>" <a href='RemoveUser.php?email='.$row['Correo'].><button></button></a>*/ "</td></tr>";
+            echo "<tr><td>" . $row['Correo'] . "</td><td>" . $row['Pass'] . "</td><td>" . $row['NomApe'] . "</td><td>" .$row['TipoUsuario']."</td><td>" .$row['BloqueadoDesbloqueado']. "<a href= 'ChangeUserState.php?email=".$row['Correo']."'><input type= 'button' value='Bloquear/Desbloquear'></a></td><td><a href= 'RemoveUser.php?email=".$row['Correo']."'><input type= 'button' value='Borrar'></a></td></tr>";
             //<button id="Bloquear/Desbloquear" name="Bloquear/Desbloquear" onClick='location.href="ChangeUserState.php"'></button>
         }
 
