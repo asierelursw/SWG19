@@ -16,23 +16,17 @@ session_start();
         
 		<?php 
         
-      if (isset($_POST['user_mail'])){
-          $user_mail = $_POST['user_mail'];
-      }else{
-          $user_mail = '';
-      }
-        $link = mysqli_connect($server, $user, $pass, $basededatos);
+      if (isset($_GET['email'])){
+          $user_mail = $_GET['email'];
+          $link = mysqli_connect($server, $user, $pass, $basededatos);
         if($user_mail!='admin@ehu.es'){
-            $usuarios = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail'");
-    			   if (!$usuarios){
-    				  die('Error: ' . mysqli_error());
-             }else{
-                mysqli_query( $link,"DELETE FROM Usuario WHERE Correo ='$user_mail'");   
-              echo "<script>alert(\"¡Usuario Desbloqueado correctamente!\");document.location.href='HandlingAccounts.php';</script>";     
-              }
-            }else{
+              mysqli_query( $link,"DELETE FROM Usuario WHERE Correo ='$user_mail'");   
+              echo "<script>alert(\"¡Usuario Borrado correctamente!\");document.location.href='HandlingAccounts.php';</script>";     
+              }else{
               echo"NO PUEDES MODIFICAR LOS DERECHOS DEL ADMINISTRADOR";
             }
+      }
+        
 
     ?>
     </div>
