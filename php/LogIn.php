@@ -52,23 +52,28 @@ session_start();
         $link = mysqli_connect($server, $user, $pass, $basededatos);
 
           if(isset($user_mail) && isset($pass)){
-            $usuarios = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail' AND Pass ='$pass1'");
+            $usuarios = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail' AND Pass =md5('$pass1')");
+            $row = mysqli_fetch_array($usuarios);
+            $bloq= $row['BloqueadoDesbloqueado'];
     			   if (!$usuarios){
     				  die('Error: ' . mysqli_error());
     			   }else{
+               if($bloq=='Bloqueado'){
+                echo "<script>alert(\"¡Estas bloqueado!\");document.location.href='LogIn.php';</script>";
+               }else{
     			     $cont= mysqli_num_rows($usuarios); 
-              if($cont==1){
-                $_SESSION["usuario"]= $user_mail;
-                echo "<script>alert(\"¡Bienvenido!\");document.location.href='HandlingQuizesAjax.php';</script>";
-              } 
-              else {
-               echo("Parametros de login incorrectos");
-              }
+                  if($cont==1){
+                    $_SESSION["usuario"]= $user_mail;
+                    echo "<script>alert(\"¡Bienvenido!\");document.location.href='HandlingQuizesAjax.php';</script>";
+                  }else {
+                    echo("Parametros de login incorrectos");
+                  }
+                }
             }
           }else{
             echo("Faltan campos por rellenar");
           }
-    } #29
+    }
     ?>
     </div>
   </section>
