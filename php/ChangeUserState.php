@@ -16,29 +16,28 @@ session_start();
         
 		<?php 
         
-      if (isset($_POST['user_mail'])){
-          $user_mail = $_POST['user_mail'];
-      }else{
-          $user_mail = '';
-      }
-        $link = mysqli_connect($server, $user, $pass, $basededatos);
+      if (isset($_GET['email'])){
+          $user_mail = $_GET['email'];
+          $link = mysqli_connect($server, $user, $pass, $basededatos);
         if($user_mail!='admin@ehu.es'){
-            $usuarios = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail'");
-            $row = mysql_fetch_array($usuarios);
-            $bloq= $row[4];
-    			   if (!$usuarios){
-    				  die('Error: ' . mysqli_error());
-    			   }elseif ($bloq='Desbloqueado') {
-              mysqli_query( $link,"ALTER TABLE UPDATE Usuario SET Bloqueado/Desbloqueado = 'Bloqueado' WHERE Correo ='$user_mail'");
+          $sql1= "SELECT * FROM Usuario WHERE Correo ='$user_mail'";
+            $usuarios = mysqli_query( $link, $sql1);
+            $row = mysqli_fetch_array($usuarios);
+            $bloq= $row['BloqueadoDesbloqueado'];
+    			   if ($bloq=='Desbloqueado') {
+               $sql ="UPDATE Usuario SET BloqueadoDesbloqueado = 'Bloqueado' WHERE Correo ='$user_mail'";
+              mysqli_query( $link,$sql);
               echo "<script>alert(\"¡Usuario Bloqueado correctamente!\");document.location.href='HandlingAccounts.php';</script>";   
-             }elseif($bloq='Bloqueado'){
+             }else{
                 //mysqli_query( $link,"DELETE FROM Usuario WHERE Correo ='$user_mail'");
-                mysqli_query( $link,"ALTER TABLE UPDATE Usuario SET Bloqueado/Desbloqueado = 'Desbloqueado' WHERE Correo ='$user_mail'");
+                mysqli_query( $link,"UPDATE Usuario SET BloqueadoDesbloqueado = 'Desbloqueado' WHERE Correo ='$user_mail'");
               echo "<script>alert(\"¡Usuario Desbloqueado correctamente!\");document.location.href='HandlingAccounts.php';</script>";     
               }
             }else{
               echo"NO PUEDES MODIFICAR LOS DERECHOS DEL ADMINISTRADOR";
             }
+      }
+        
 
     ?>
     </div>
