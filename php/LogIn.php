@@ -50,6 +50,8 @@ session_start();
         }
         
         $link = mysqli_connect($server, $user, $pass, $basededatos);
+        $user_mail=strip_tags($user_mail);
+        $pass=strip_tags($pass);
 
           if(isset($user_mail) && isset($pass)){
             $usuarios = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail' AND Pass =md5('$pass1')");
