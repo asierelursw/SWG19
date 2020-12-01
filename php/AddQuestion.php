@@ -37,6 +37,14 @@ standalone="no“ ?>
 	$dificultad = $_POST['dificultad'];
 	$tema = $_POST['tema'];
 
+	$pregunta = strip_tags($pregunta);
+	$correcta = strip_tags($correcta);
+	$falsa1 = strip_tags($falsa1);
+	$falsa2 = strip_tags($falsa2);
+	$falsa3 = strip_tags($falsa3);
+	$dificultad = strip_tags($dificultad);
+	$tema = strip_tags($tema);
+
 	if(strlen($user_mail)>0 && strlen($pregunta)>0 && strlen($correcta)>0 && strlen($falsa1)>0 && strlen($falsa2)>0 && strlen($falsa3)>0 && strlen($dificultad)>0 && strlen($tema)>0){
 		if((preg_match($prof,$user_mail) || preg_match($alum, $user_mail))){
 			if(strlen($pregunta)>=10){
