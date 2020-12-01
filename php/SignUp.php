@@ -59,7 +59,7 @@
             </li>    
 	        <!-- Foto Opcional -->
             <br>
-            <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true">
+            <input type="submit" name="submit" value="Enviar" id="Enviar" onblur="activar()" disabled="true">
         </ul>
         </form>
         <?php 
@@ -76,7 +76,7 @@
         if (isset($_POST["nyp"])){
             $NyP = $_POST['nyp'];
         }else{
-            $nyp = "";
+            $NyP = "";
         }
         
         if (isset($_POST["pass1"])){
@@ -101,7 +101,10 @@
         $alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
 
         //$NomApe = explode(" ", $NyP);
-
+        $user_mail = strip_tags($user_mail);
+        $NyP = strip_tags($NyP);
+        $pass1 = strip_tags($pass1);
+        $pass2 =strip_tags($pass2);
 
             if(isset($user_mail) && isset($NyP) && isset($pass1) && isset($pass2)){
                 if(preg_match($prof, $user_mail) || preg_match($alum, $user_mail) ){
