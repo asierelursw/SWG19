@@ -14,6 +14,8 @@ session_start();
     </script>
     <script src='../js/ShowQuestionsAjax.js'>
     </script>
+    <script src="../js/CountQuestionsAjax.js">
+    </script>
     <style>
         #div1 {
             margin: auto;
@@ -129,6 +131,11 @@ session_start();
                 </form>
                 <input type="button" value="Mostrar Preguntas" id="Mostrar" style="height:20px; width:300px" onclick="VerPreguntas()">
                 <div id="result"></div>
+                <div id="contadores">
+                <h4>TOT PREGUNTAS / TUS PREGUNTAS</h4>
+                <div id="contPreguntas"></div>
+            </div>
+            <div id="res"></div>
                 </center>
         </section>
 
