@@ -24,7 +24,7 @@
             </li>
             <li>
                 <label for="email">Correo*:</label>
-                <input type="email" id="user_mail" name="user_mail" size="52" onblur="VerificarVip()">
+                <input type="email" id="user_mail" name="user_mail" size="52" onfocus="CleanEmail()" onblur="VerificarVip()">
                 <br>
                 </br>
                 <label id="vip" value=""></label>
@@ -43,7 +43,7 @@
             <p>
             <li>
                 <label for="password">Contraseña*:</label>
-                <input type="password" id="pass1" name="pass1" size="52" onblur="VarificarPass()">
+                <input type="password" id="pass1" name="pass1" size="52" onfocus="CleanPass()" onblur="VarificarPass()">
                 <br>
                 </br>
                 <label id="validpass" value=""></label>
@@ -57,7 +57,12 @@
                 <input type="password" id="pass2" name="pass2" size="52">
                 <!-- pass == pass2 -->
             </li>    
-	        <!-- Foto Opcional -->
+            <li>
+               <!-- Foto Opcional -->
+               <label for="file">file*:
+	            </label>
+                <input type="file" id="file" accept="image/*" name="file"> </textarea> 
+            </li> 
             <br>
             <input type="submit" name="submit" value="Enviar" id="Enviar" onblur="activar()" disabled="true">
         </ul>
@@ -96,6 +101,8 @@
         }else{
             $radio = "";
         }
+
+        $imagen = $_FILES['file']['tmp_name'];
          
         $prof = "/^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/";
         $alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
@@ -106,14 +113,15 @@
         $pass1 = strip_tags($pass1);
         $pass2 =strip_tags($pass2);
 
-            if(isset($user_mail) && isset($NyP) && isset($pass1) && isset($pass2)){
+            if(isset($user_mail) && isset($NyP) && isset($pass1) && isset($pass2) && imagen!= ""){
                 if(preg_match($prof, $user_mail) || preg_match($alum, $user_mail) ){
                     if($pass1 == $pass2){
                         if(strlen($pass1)>6){
                             if ($NyP == trim($NyP) && strpos($NyP, ' ') !== false){
+                                $imagen_b64 = base64_encode(file_get_contents($imagen));
                                 $link = mysqli_connect($server, $user, $pass, $basededatos);
-                                $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario) 
-                                VALUES('$user_mail', md5('$pass1'),'$NyP','$radio');";
+                                $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario, Imagen) 
+                                VALUES('$user_mail', md5('$pass1'),'$NyP','$radio', '$imagen_b64);";
                                 if (!mysqli_query($link ,$sql))
                                 {
                                     die('Error: ' . mysqli_error());
