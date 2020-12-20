@@ -1,23 +1,22 @@
 function VerificarVip() {
     var email = document.getElementById('user_mail').value;
-    var bool = false;
     if (XMLHttpRequest) xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/ClientVerifyEnrollment.php?email=" + email, true);
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200)
-            document.getElementById("vip").innerHTML = xhr.responseText;
-        if (xhr.responseText == "<p style='color:green;'> Usuario Vip </p>") {
-            bool = true;
-            //document.getElementById('Enviar').disabled = false;
-        } else {
-            bool = false;
-            //document.getElementById('Enviar').disabled = true;
-        }
-    };
-    xhr.send("");
-    return bool;
+        if(xhr.readyState == 4 && xhr.status == 200)
+		if (xhr.responseText == "SI") {
+			document.getElementById('vip').style.color = 'darkgreen';
+			document.getElementById('vip').innerHTML = '<p style=\'color:green;\'> Usuario Vip </p>';
+		} else if (xhr.responseText == 'NO'){
+			document.getElementById('vip').style.color = 'darkred';
+			document.getElementById('vip').innerHTML = '<p style=\'color:red;\'> Usuario No Vip </p>';
+		} else {
+			document.getElementById('vip').style.color = 'darkred';
+			document.getElementById('vip').innerHTML = 'Sin servicio';
+		}
+	}
+	xhr.send('');
 }
-
 function VarificarPass() {
 
     var pass = document.getElementById('pass1').value;
@@ -26,30 +25,25 @@ function VarificarPass() {
     if (XMLHttpRequest) xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/ClientVerifyPass.php?pass1=" + pass, true);
     xhr.onreadystatechange = function() {
-
-        if (xhr.readyState == 4 && xhr.status == 200)
-            document.getElementById("validpass").innerHTML = xhr.responseText;
-
-        if (xhr.responseText == "<p style='color:green;'> Contraseña Valida </p>") {
-            bool = true;
-            //document.getElementById('Enviar').disabled = false;
-        } else {
-            bool = false;
-            //document.getElementById('Enviar').disabled = true;
-
-        }
-
-    };
-    xhr.send("");
-    return bool;
+        if(xhr.readyState == 4 && xhr.status == 200)
+		if (xhr.responseText == 'VALIDA'){
+			document.getElementById('validpass').innerHTML = '<p style=\'color:green;\'> Contraseña Valida </p>';
+			document.getElementById('validpass').style.color = 'darkgreen';
+		}else if(xhr.responseText == 'INVALIDA'){
+			document.getElementById('validpass').innerHTML = '<p style=\'color:red;\'> Contraseña No Valida </p>';
+			document.getElementById('validpass').style.color = 'darkred';	
+		}else{
+			document.getElementById('validpass').innerHTML = '<p style=\'color:blue;\'> Fuera de Servicio </p>';
+			document.getElementById('validpass').style.color = 'darkred';
+		}		
+	}
+	xhr.send('');
 }
 
-function activar() {
-    var pass = document.getElementById('validpass').value;
-    var email = document.getElementById('vip').value;
-    if ((VerificarVip() == false && VarificarPass() == false) || (VerificarVip() == false) || (VarificarPass() == false)) {
-        document.getElementById('Enviar').disabled = true;
-    } else {
-        document.getElementById('Enviar').disabled = false;
-    }
+function CleanEmail(){
+	document.getElementById('vip').innerHTML = "";
+}
+
+function CleanPass(){
+	document.getElementById('VarificarPass').innerHTML = "";
 }
