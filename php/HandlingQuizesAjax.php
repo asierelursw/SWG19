@@ -32,10 +32,16 @@ session_start();
 
 <body>
 <?php
-    if($_SESSION['usuario']=='admin@ehu.es'){
-        echo "<script>alert(\"RECORDATORIO: El Administrador NO puede añadir preguntas!\");document.location.href='HandlingAccounts.php';</script>";
-    }elseif(isset($_SESSION['usuario'])){
-        include "../php/MenusRegistrados.php";
+
+    if(isset($_SESSION['usuario'])){
+
+        if($_SESSION['usuario']=='admin@ehu.es'){
+            echo "<script>alert(\"RECORDATORIO: El Administrador NO puede añadir preguntas!\");document.location.href='HandlingAccounts.php';</script>";
+            include "../php/MenuAdmin.php";
+        }elseif($_SESSION['usuario']!='admin@ehu.es'){
+            echo "<script>document.location.href='QuestionForm.php';</script>";
+            include "../php/MenusRegistrados.php";
+        } 
     } else {
         include "../php/Menus.php";
     }

@@ -23,7 +23,7 @@ session_start();
  <center>
   <li>
     <label for="mail">Correo*:</label>
-    <input type="email" id="mail" name="user_mail" value="<?php echo $email; ?>" size= "52" readonly>
+    <input type="email" id="mail" name="user_mail" value="<?php echo$_SESSION['usuario']; ?>" size= "52" readonly>
   </li>
   <p>
   <br/>
