@@ -10,8 +10,10 @@ session_start();
 <body>
 <?php
     if(isset($_SESSION['usuario'])){
-        include "../php/MenusRegistrados.php";
-    }
+          include "../php/MenuAdmin.php";
+  } else {
+      include "../php/Menus.php";
+  }
 ?>
   
   <section class="main" id="s1">
