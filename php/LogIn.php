@@ -10,10 +10,15 @@ session_start();
 <body>
 <?php
     if(isset($_SESSION['usuario'])){
-        include "../php/MenusRegistrados.php";
-    } else {
-        include "../php/Menus.php";
-    }
+
+      if($_SESSION['usuario']=='admin@ehu.es'){
+          include "../php/MenuAdmin.php";
+      }elseif($_SESSION['usuario']!='admin@ehu.es'){
+          include "../php/MenusRegistrados.php";
+      } 
+  } else {
+      include "../php/Menus.php";
+  }
 ?>
   
   <section class="main" id="s1">
