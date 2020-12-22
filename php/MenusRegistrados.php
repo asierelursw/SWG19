@@ -1,15 +1,20 @@
 <?php
 include '../php/DbConfig.php';
+
 $link = mysqli_connect($server, $user, $pass, $basededatos);
-$sql="SELECT Imagen FROM Usuario WHERE Usuario.Correo =".$_SESSION['usuario'].";";
-$_SESSION['img'] = $sql;
+$sql="SELECT Imagen FROM Usuario WHERE Correo ='". $_SESSION['usuario'] . "';";
+$img = mysqli_query($link,$sql);
+$img2 = mysqli_fetch_array($img);
+$_SESSION['img'] = "";
 
-
+$_SESSION['img'] = "data:image;base64,". $img2['Imagen'];
 echo"
 <div id='page-wrap'>
 <header class='main' id='h1'>
         <span class='right'><a>".$_SESSION['usuario']."</a>
-        <img src='".base64_decode($sql)."'>
+        <br/>
+        <img src='".$_SESSION['img']."' height='90px'>
+        <br/>
         <span class='right'><a href='LogOut.php'>Logout</a></span>
 </header>
 <nav class='main' id='n1' role='navigation'>
