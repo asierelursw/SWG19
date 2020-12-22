@@ -138,7 +138,7 @@ session_start();
                 <input type="button" value="Mostrar Preguntas" id="Mostrar" style="height:20px; width:300px" onclick="VerPreguntas()">
                 <div id="result"></div>
                 <div id="contadores">
-                <h4>TOT PREGUNTAS / TUS PREGUNTAS</h4>
+                <h4>TOTAL PREGUNTAS / TUS PREGUNTAS</h4>
                 <div id="contPreguntas"></div>
             </div>
             <div id="res"></div>
