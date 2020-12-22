@@ -39,7 +39,7 @@ session_start();
             echo "<script>alert(\"RECORDATORIO: El Administrador NO puede añadir preguntas!\");document.location.href='HandlingAccounts.php';</script>";
             include "../php/MenuAdmin.php";
         }elseif($_SESSION['usuario']!='admin@ehu.es'){
-            echo "<script>document.location.href='QuestionForm.php';</script>";
+            
             include "../php/MenusRegistrados.php";
         } 
     } else {
