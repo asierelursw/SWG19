@@ -98,7 +98,7 @@
         }else{
             $imagen="";
         }
-        
+        //$imgInp = file_get_contents(addslashes($_FILES['imgInp']['tmp_name']));
          
         $prof = "/^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/";
         $alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
@@ -114,7 +114,11 @@
                     if($pass1 == $pass2){
                         if(strlen($pass1)>6){
                             if ($NyP == trim($NyP) && strpos($NyP, ' ') !== false){
-                                $imagen_b64 = base64_encode(file_get_contents($imagen));
+                                
+                                $imagen= addslashes($imagen);
+                                $imagen=file_get_contents($imagen);
+                                $imagen_b64 = base64_encode($imagen);
+
                                 $link = mysqli_connect($server, $user, $pass, $basededatos);
                                 $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario, Imagen) 
                                 VALUES('$user_mail', md5('$pass1'),'$NyP','$radio', '$imagen_b64');";
