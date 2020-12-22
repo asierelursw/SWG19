@@ -15,7 +15,7 @@
   <section class="main" id="s1">
     <div>
 	
-        <form id='fSingUp' name='fSingUp' action="" method="Post">
+        <form id='fSingUp' name='fSingUp' action="" method="Post" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="tusuario"> Tipo de usuario*:</label>
@@ -61,7 +61,7 @@
                <!-- Foto Opcional -->
                <label for="file">file*:
 	            </label>
-                <input type="file" id="file" accept="image/*" name="file"> </textarea> 
+                <input type="file" id="file" accept="image/*" name="file"/>
             </li> 
             <br>
             <input type="submit" name="submit" value="Enviar" id="Enviar" onblur="activar()" disabled="true">
@@ -74,35 +74,31 @@
         
         if (isset($_POST["user_mail"])){
             $user_mail = $_POST['user_mail'];
-        }else{
-            $user_mail = "";
         }
         
         if (isset($_POST["nyp"])){
             $NyP = $_POST['nyp'];
-        }else{
-            $NyP = "";
         }
         
         if (isset($_POST["pass1"])){
             $pass1 = $_POST['pass1'];
-        }else{
-            $pass1 = "";
         }
 
         if (isset($_POST["pass2"])){
             $pass2 = $_POST['pass2'];
-        }else{
-            $pass2 = "";
         }
 
         if (isset($_POST["radio"])){
             $radio = $_POST['radio'];
-        }else{
-            $radio = "";
         }
 
-        $imagen = $_FILES['file']['tmp_name'];
+        if($_FILES!=null && $_POST!=null){
+            $imagen = $_FILES['file']['tmp_name'];
+
+        }else{
+            $imagen="";
+        }
+        
          
         $prof = "/^[a-zA-Z]+(.[a-zA-Z]+@ehu.(eus|es)|@ehu.(eus|es))$/";
         $alum = "/^[a-zA-Z]+(([0-9]{3})+@ikasle.ehu.(eus|es))$/";
@@ -113,7 +109,7 @@
         $pass1 = strip_tags($pass1);
         $pass2 =strip_tags($pass2);
 
-            if(isset($user_mail) && isset($NyP) && isset($pass1) && isset($pass2) && imagen!= ""){
+            if(isset($user_mail) && isset($NyP) && isset($pass1) && isset($pass2) && $imagen!=""){
                 if(preg_match($prof, $user_mail) || preg_match($alum, $user_mail) ){
                     if($pass1 == $pass2){
                         if(strlen($pass1)>6){
@@ -121,7 +117,8 @@
                                 $imagen_b64 = base64_encode(file_get_contents($imagen));
                                 $link = mysqli_connect($server, $user, $pass, $basededatos);
                                 $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario, Imagen) 
-                                VALUES('$user_mail', md5('$pass1'),'$NyP','$radio', '$imagen_b64);";
+                                VALUES('$user_mail', md5('$pass1'),'$NyP','$radio', '$imagen_b64');";
+                                
                                 if (!mysqli_query($link ,$sql))
                                 {
                                     die('Error: ' . mysqli_error());
