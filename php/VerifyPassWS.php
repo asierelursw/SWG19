@@ -14,18 +14,19 @@
 
     //registramos la función que vamos a implementar
 
-
     $server->register('Validar',
     array('x'=>'xsd:string'),
-    array('z'=>'xsd:string'),
+    array('y'=>'xsd:int'),
     $ns);
 
     //implementamos la función
 
-    function Validar ($x){
+    function Validar ($x,$y){
         
+        if($y!=1010){
+            return "Fuera de Servicio";
+        }
         $archivo = file_get_contents('../txt/toppasswords.txt');
-        
         if (strpos($archivo, $x) != false){ //si esta la palabra x en el archivo
             return "INVALIDA";
         }else{
