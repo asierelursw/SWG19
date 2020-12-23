@@ -8,9 +8,9 @@ $soapclient = new nusoap_client( 'http://ehusw.es/jav/ServiciosWeb/comprobarmatr
 if (isset($_GET['email'])){
     $result = $soapclient->call('comprobar',array('x'=>$_GET['email']));
    if($result =="SI"){
-       echo  "<p style='color:green;'> Usuario Vip </p>";
+       echo "SI";
    }else{
-       echo"<p style='color:red;'> Usuario No Vip </p>";
+       echo "NO";
    }
 }
 ?>
