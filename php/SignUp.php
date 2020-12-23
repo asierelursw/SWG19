@@ -7,7 +7,9 @@
   <?php include '../html/Head.html'?>
   <?php include '../php/DbConfig.php'?>
   <script src='../js/VerifyAjax.js'>
-    </script>
+</script>
+<script src='../js/ValidarBoton.js'>
+</script>
 </head>
 <body>
   <?php include '../php/Menus.php';?>
@@ -24,7 +26,7 @@
             </li>
             <li>
                 <label for="email">Correo*:</label>
-                <input type="email" id="user_mail" name="user_mail" size="52" onfocus="CleanEmail()" onblur="VerificarVip()">
+                <input type="email" id="user_mail" name="user_mail" size="52"  onblur="VerificarVip()">
                 <br>
                 </br>
                 <label id="vip" value=""></label>
@@ -43,7 +45,7 @@
             <p>
             <li>
                 <label for="password">Contraseña*:</label>
-                <input type="password" id="pass1" name="pass1" size="52" onfocus="CleanPass()" onblur="VarificarPass()">
+                <input type="password" id="pass1" name="pass1" size="52"  onblur="VarificarPass()">
                 <br>
                 </br>
                 <label id="validpass" value=""></label>
@@ -63,8 +65,8 @@
 	            </label>
                 <input type="file" id="file" accept="image/*" name="file"/>
             </li> 
-            <br>
-            <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true">
+            <br>  
+            <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true" >
         </ul>
         </form>
         <?php 
@@ -122,7 +124,7 @@
                                 $link = mysqli_connect($server, $user, $pass, $basededatos);
                                 $sql="INSERT INTO Usuario(Correo, Pass, NomApe, TipoUsuario, Imagen) 
                                 VALUES('$user_mail', md5('$pass1'),'$NyP','$radio', '$imagen_b64');";
-                                
+                                echo $sql;
                                 if (!mysqli_query($link ,$sql))
                                 {
                                     die('Error: ' . mysqli_error());
