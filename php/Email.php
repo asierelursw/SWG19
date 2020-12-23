@@ -1,16 +1,20 @@
 <?php
-session_start();
 include 'DbConfig.php';
 
-if (isset($_REQUEST['user_mail'])) {
+##echo $_GET['user_mail'];
+$user_mail = $_GET['user_mail'];
+if (isset($user_mail)) {
+    
     $link = mysqli_connect($server, $user, $pass, $basededatos);
     if (!$link) {
         die("Fallo al conectar a MySQL: " . mysqli_connect_error());
     }
-    $user_mail=$_REQUEST['user_mail']
-    $sql = mysqli_query( $link,"SELECT * FROM Usuario WHERE Correo ='$user_mail'");
-    $row = mysqli_fetch_array($sql);
-    $cont= mysqli_num_rows($usuarios); 
+    
+    $sql = "SELECT Correo FROM Usuario WHERE Correo ='". $user_mail ."';";
+    $consulta = mysqli_query($link,$sql);
+    ##echo"<script>alert('.$consulta['Email'].')</script>";
+    $row = mysqli_fetch_array($consulta);
+    $cont= mysqli_num_rows($row); 
     
     if ($cont==1) {
         
@@ -37,7 +41,7 @@ if (isset($_REQUEST['user_mail'])) {
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $headers .= 'To: ' . $to . "\r\n";
-        $headers .= 'From: Daniel <druskov001@ikasle.ehu.eus>' . "\r\n";
+        $headers .= 'From: Administration <administration@ikasle.ehu.eus>' . "\r\n";
         mail($to, $subject, $message, $headers);
 
         echo "Correcto";
