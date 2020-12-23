@@ -10,7 +10,7 @@
     //creamos el objeto de tipo soapclient.
     //http://www.mydomain.com/server.php se refiere a la url
     //donde se encuentra el servicio SOAP que vamos a utilizar.
-    $ticket='1010';
+    $ticket=1010;
     $soapclient = new nusoap_client('https://crescive-discontinu.000webhostapp.com/LabBDAsierCruzElurSalgueira/php/VerifyPassWS.php?wsdl',true);
 
     //Llamamos la función que habíamos implementado en el Web Service
@@ -20,11 +20,11 @@
         $result = $soapclient->call('Validar',array('x'=>$cont,'y'=>$ticket));
 
         if($result =="INVALIDA"){
-        echo  "<p style='color:red;'> Contraseña No Valida </p>";
+        echo "INVALIDA";
         }else if ($result == "VALIDA"){
-        echo"<p style='color:green;'> Contraseña Valida </p>";
-        }else{
-            echo"<p style='color:blue;'> Fuera de Servicio </p>";
+        echo "VALIDA";
+        }else if($result=="Fuera de Servicio"){
+            echo"Fuera de Servicio";
         }
     }
 ?>
