@@ -64,7 +64,7 @@
                 <input type="file" id="file" accept="image/*" name="file"/>
             </li> 
             <br>
-            <input type="submit" name="submit" value="Enviar" id="Enviar" onblur="vanLas2()" disabled="true">
+            <input type="submit" name="submit" value="Enviar" id="Enviar" disabled="true">
         </ul>
         </form>
         <?php 
