@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 ?>
 <html>
 
@@ -33,7 +33,7 @@ include "../php/Menus.php";
                                 <label for="mail">Correo* (Se le enviará al correo un mensaje de recuperación):</label></br>
                                 <input type="email" id="user_mail" name="user_mail" size="52">
                             </li>
-							<input type='button' id='Recuperar' value='Enviar'/>				
+							<input type='submit' id='Recuperar' value='Enviar'/>				
 			</form>
 		</div>
 	</section>
