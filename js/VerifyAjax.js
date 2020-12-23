@@ -20,7 +20,6 @@ function VerificarVip() {
 function VarificarPass() {
 
     var pass = document.getElementById('pass1').value;
-    var bool = false;
 
     if (XMLHttpRequest) xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/ClientVerifyPass.php?pass1=" + pass, true);
