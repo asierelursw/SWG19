@@ -13,7 +13,7 @@ echo"
 <header class='main' id='h1'>
         <span class='right'><a>".$_SESSION['usuario']."</a>
         <br/>
-        <img src='".$_SESSION['img']."' height='90px'>
+        <img src='".$_SESSION['img']."' height='90px' width='90px'>
         <br/>
         <span class='right'><a href='LogOut.php'>Logout</a></span>
 </header>
