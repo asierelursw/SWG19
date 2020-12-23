@@ -7,5 +7,6 @@
 <nav class='main' id='n1' role='navigation'>
   <span><a href='Layout.php'>Inicio</a></span>
   <span><a href='Credits.php'>Creditos</a></span>
+  <span><a href='RestablecerContrasena.php'>Cambiar Contraseña</a><span>
 </nav>
 
