@@ -37,10 +37,12 @@ function VarificarPass() {
 	xhr.send('');
 }
 
-function CleanEmail(){
-	document.getElementById('vip').innerHTML = "";
-}
-
-function CleanPass(){
-	document.getElementById('VarificarPass').innerHTML = "";
+function vanLas2(){
+	$x = document.getElementById('validpass').innerHTML;
+	$y = document.getElementById('vip').innerHTML;
+	if($x=="<p style=\'color:green;\'> Usuario Vip </p>" && $y=="<p style=\'color:green;\'> Contraseña Valida </p>"){
+		document.getElementById('Enviar').disabled=false;
+	}else{
+		document.getElementById('Enviar').disabled=true;
+	}
 }
