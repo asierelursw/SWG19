@@ -13,17 +13,16 @@ session_start();
 	<script src="../js/CambioContraseña.js">
     </script>
 	</head>
-	
 	<body>
 		<?php include '../php/Menus.php' ?>
 		<section class="main" id="s1">
 			<div id="div1">
 	
-				<form name="fpass" id="fpass">
+				<form name="fpass" id="fpass" method="POST" action="RestablecerContrasenaAux.php">
                 
                 <li>
                 <label for="email">Correo*:</label>
-                <input type="email" id="user_mail" name="user_mail" size="52" value="<?php $_SESSION['restablecer'] ?>" onblur="VerificarVip()">
+                <input type="email" id="user_mail" name="user_mail" size="52" value="" >
                 <br>
                 </br>
             </li>
@@ -39,17 +38,18 @@ session_start();
             <p>
             <li>
                 <label for="password2">Repita la Contraseña*:</label>
-                <input type="password" id="pass2" name="pass2" size="52">
+                <input type="password" id="Pass2" name="Pass2" size="52">
             </li>    
 			
             <li>
                 <label for="code">Introduce el código que le hemos enviado a su email:</label>
                 <input type="number" id="code" name="code" size="52">
-                <input type='button' id='submit' value='Cambiar contraseña' onclick='CambiarContraseña()'
-									disabled>
+                <input type='submit' id='submit' value='Cambiar contraseña'>
             </li>    
 				</form>
-	
+                <?php $codigo = $_SESSION['codigo'];
+                 echo "Codigo" . $codigo;
+                ?>
 	
 			</div>
 			<div id='feedback'>
