@@ -24,17 +24,15 @@ function VarificarPass() {
     if (XMLHttpRequest) xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/ClientVerifyPass.php?pass1=" + pass, true);
     xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200)
-		if (xhr.responseText == 'VALIDA'){
-			document.getElementById('validpass').innerHTML = '<p style=\'color:green;\'> Contraseña Valida </p>';
-			document.getElementById('validpass').style.color = 'darkgreen';
-		}else if(xhr.responseText == 'INVALIDA'){
-			document.getElementById('validpass').innerHTML = '<p style=\'color:red;\'> Contraseña No Valida </p>';
-			document.getElementById('validpass').style.color = 'darkred';	
-		}else{
-			document.getElementById('validpass').innerHTML = '<p style=\'color:blue;\'> Fuera de Servicio </p>';
-			document.getElementById('validpass').style.color = 'darkred';
-		}		
+        if(xhr.readyState == 4 && xhr.status == 200){
+			if(xhr.responseText == 'VALIDA'){
+				document.getElementById('validpass').innerHTML = '<p style=\'color:green;\'> Contraseña Valida </p>';
+			}else if(xhr.responseText == 'INVALIDA'){
+				document.getElementById('validpass').innerHTML = '<p style=\'color:red;\'> Contraseña No Valida </p>';
+			}else if(xhr.responseText=="Fuera de Servicio"){
+				document.getElementById('validpass').innerHTML = '<p style=\'color:blue;\'> Fuera de Servicio </p>';
+			}
+		}
 	}
 	xhr.send('');
 }
