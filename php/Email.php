@@ -25,6 +25,7 @@ if (isset($user_mail)) {
 
         $_SESSION['restablecer'] = $user_mail;
         $_SESSION['codigo'] = $codigo;
+        echo $codigo;
 
         $message = "
         <html>
@@ -52,4 +53,4 @@ if (isset($user_mail)) {
 } else {
     echo "<script>alert('Introduce un correo antes de continuar!');document.location.href='RestablecerContrasena.php'</script>";
 }
-echo "<script>alert('Se ha enviado el Email correctamente');document.location.href=''</script>";
+
