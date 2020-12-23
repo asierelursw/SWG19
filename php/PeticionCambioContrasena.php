@@ -48,7 +48,7 @@ session_start();
             </li>    
 				</form>
                 <?php $codigo = $_SESSION['codigo'];
-                 echo "Codigo" . $codigo;
+                 echo "Codigo " . $codigo;
                 ?>
 	
 			</div>
