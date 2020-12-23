@@ -7,7 +7,7 @@
 	<?php include '../html/Head.html' ?>
 	<script src="../js/jquery-3.4.1.min.js">
     </script>
-	<script src="../js/RestablecerContraseña.js">
+	<script src="../js/CambioContrasena.js">
     </script>
 	<script src="../js/VerifyAjax.js">
     </script>
@@ -33,10 +33,10 @@ include "../php/Menus.php";
                         <center>
                             <li>
                                 <label for="mail">Correo* (Se le enviará al correo un mensaje de recuperación):</label></br>
-                                <input type="email" id="mail" name="user_mail" size="52">
+                                <input type="email" id="user_mail" name="user_mail" size="52">
                             </li>
 							<input type='button' id='Recuperar' value='Enviar'
-								onClick='RestablecerContraseña()'>
+								onclick="CambiarContraseña()">
                             <div id='feedback'></div>
 						
 			</form>
