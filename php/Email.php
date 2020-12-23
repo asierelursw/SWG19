@@ -1,8 +1,9 @@
 <?php
+session_start();
 include 'DbConfig.php';
 
 ##echo $_GET['user_mail'];
-$user_mail = $_GET['user_mail'];
+$user_mail = $_POST['user_mail'];
 if (isset($user_mail)) {
     
     $link = mysqli_connect($server, $user, $pass, $basededatos);
