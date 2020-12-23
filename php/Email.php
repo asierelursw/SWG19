@@ -14,8 +14,7 @@ if (isset($user_mail)) {
     $sql = "SELECT Correo FROM Usuario WHERE Correo ='". $user_mail ."';";
     $consulta = mysqli_query($link,$sql);
     ##echo"<script>alert('.$consulta['Email'].')</script>";
-    $row = mysqli_fetch_array($consulta);
-    $cont= mysqli_num_rows($row); 
+    $cont= mysqli_num_rows($consulta); 
     
     if ($cont==1) {
         
@@ -45,11 +44,12 @@ if (isset($user_mail)) {
         $headers .= 'From: Administration <administration@ikasle.ehu.eus>' . "\r\n";
         mail($to, $subject, $message, $headers);
 
-        echo "Correcto";
+        echo  "<script>alert('Se ha enviado el Email correctamente');document.location.href='PeticionCambioContrasena.php'</script>";
     } else {
-        echo "Correo no está en la BD";
+        echo "<script>alert('El correo no está en la BD');document.location.href='RestablecerContrasena.php'</script>";
     }
     mysqli_close($link);
 } else {
-	echo "Introduce un correo antes de continuar!";
+    echo "<script>alert('Introduce un correo antes de continuar!');document.location.href='RestablecerContrasena.php'</script>";
 }
+echo "<script>alert('Se ha enviado el Email correctamente');document.location.href=''</script>";
