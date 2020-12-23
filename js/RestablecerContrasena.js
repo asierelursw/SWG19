@@ -2,7 +2,7 @@ function RestablecerContraseña() {
     if (XMLHttpRequest) xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
-      "../php/RestablecerContraseñaAux.php?email=" +
+      "../php/RestablecerContrasenaAux.php?email=" +
         document.getElementById("user_mail").value +
         "&Pass=" +
         document.getElementById("pass").value +
