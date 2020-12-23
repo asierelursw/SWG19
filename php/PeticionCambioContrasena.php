@@ -45,7 +45,7 @@ session_start();
             <li>
                 <label for="code">Introduce el código que le hemos enviado a su email:</label>
                 <input type="number" id="code" name="code" size="52">
-                <input type='button' id='submit' value='Cambiar contraseña' onClick='CambiarContraseña()'
+                <input type='button' id='submit' value='Cambiar contraseña' onclick='CambiarContraseña()'
 									disabled>
             </li>    
 				</form>
